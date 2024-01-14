@@ -1,16 +1,16 @@
 package ru.gb;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class Employees {
     private String surname;
     private String firstName;
     private String lastName;
-    private String birthday;
+    private LocalDate birthday;
     private String position;
     private double salary;
 
-    public Employees(java.lang.String surname, java.lang.String firstName, java.lang.String lastName, java.lang.String birthday, java.lang.String position, double salary) {
+    public Employees(String surname, String firstName, String lastName, LocalDate birthday, String position, double salary) {
         this.surname = surname;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -43,11 +43,11 @@ public class Employees {
         this.lastName = lastName;
     }
 
-    public java.lang.String getBirthday() {
+    public java.time.LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(java.lang.String birthday) {
+    public void setBirthday(java.time.LocalDate birthday) {
         this.birthday = birthday;
     }
 
@@ -68,7 +68,14 @@ public class Employees {
     }
 
 
-    public static void compareDates(ArrayList<Employees> emploees, String birthday, int age) {
+    public static void compareDates(LocalDate date1, LocalDate date2) {
+
+        if (date1.isAfter(date2))
+            System.out.println(String.format("%s наступает после %s", date1, date2));
+        else if (date1.isBefore(date2))
+            System.out.println(String.format("%s наступает раньше %s", date1, date2));
+        else if (date1.isEqual(date2))
+            System.out.println("Обе даты равны");
 
     }
 
