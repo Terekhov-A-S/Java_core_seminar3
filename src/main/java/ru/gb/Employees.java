@@ -1,20 +1,21 @@
 package ru.gb;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 
 public class Employees {
     private String surname;
     private String firstName;
     private String lastName;
-    private LocalDate birthday;
+    private LocalDate birthDate;
     private String position;
     private double salary;
 
-    public Employees(String surname, String firstName, String lastName, LocalDate birthday, String position, double salary) {
+    public Employees(String surname, String firstName, String lastName, LocalDate birthDate, String position, double salary) {
         this.surname = surname;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthday = birthday;
+        this.birthDate = birthDate;
         this.position = position;
         this.salary = salary;
     }
@@ -44,11 +45,11 @@ public class Employees {
     }
 
     public java.time.LocalDate getBirthday() {
-        return birthday;
+        return birthDate;
     }
 
-    public void setBirthday(java.time.LocalDate birthday) {
-        this.birthday = birthday;
+    public void setBirthDate(java.time.LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     public java.lang.String getPosition() {
@@ -68,15 +69,9 @@ public class Employees {
     }
 
 
-    public static void compareDates(LocalDate date1, LocalDate date2) {
-
-        if (date1.isAfter(date2))
-            System.out.println(String.format("%s наступает после %s", date1, date2));
-        else if (date1.isBefore(date2))
-            System.out.println(String.format("%s наступает раньше %s", date1, date2));
-        else if (date1.isEqual(date2))
-            System.out.println("Обе даты равны");
-
+    // Прототип компаратора для сравнения двух дат рождения сотрудников
+    public static Comparator<Employees> birthDateComparator() {
+        return Comparator.comparing(employee -> employee.birthDate);
     }
 
 }
